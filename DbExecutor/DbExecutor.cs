@@ -72,7 +72,7 @@ namespace Codeplex.Data
                     Contract.Assume(parameter != null);
                     var param = command.CreateParameter();
                     param.ParameterName = p.Name;
-                    param.Value = p.GetValueDirect(parameter);
+                    param.Value = p.GetValueDirect(parameter) ?? DBNull.Value;
                     command.Parameters.Add(param);
                 }
             }
@@ -85,7 +85,7 @@ namespace Codeplex.Data
                     Contract.Assume(extraParameter != null);
                     var param = command.CreateParameter();
                     param.ParameterName = "__extra__" + p.Name;
-                    param.Value = p.GetValueDirect(extraParameter);
+                    param.Value = p.GetValueDirect(extraParameter) ?? DBNull.Value;
                     command.Parameters.Add(param);
                 }
             }
